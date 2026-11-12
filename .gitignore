@@ -1,0 +1,9 @@
+backend/target/
+backend/data/
+web/node_modules/
+web/dist/
+web/test-results/
+web/playwright-report/
+.env
+.env.local
+*.log
