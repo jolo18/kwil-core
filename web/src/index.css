@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: oklch(0.99 0 0);
+  --foreground: oklch(0.21 0.02 265);
+  --card: oklch(1 0 0);
+  --muted: oklch(0.967 0.003 265);
+  --muted-foreground: oklch(0.52 0.02 265);
+  --border: oklch(0.92 0.004 265);
+  --primary: oklch(0.55 0.2 262);
+  --primary-foreground: oklch(0.99 0 0);
+  --accent: oklch(0.96 0.02 262);
+  --destructive: oklch(0.58 0.22 27);
+  --success: oklch(0.6 0.15 155);
+  --warning: oklch(0.75 0.15 75);
+  --ring: oklch(0.55 0.2 262 / 0.4);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: oklch(0.16 0.01 265);
+    --foreground: oklch(0.95 0.005 265);
+    --card: oklch(0.2 0.012 265);
+    --muted: oklch(0.24 0.012 265);
+    --muted-foreground: oklch(0.7 0.015 265);
+    --border: oklch(0.3 0.012 265);
+    --primary: oklch(0.66 0.18 262);
+    --primary-foreground: oklch(0.15 0.01 265);
+    --accent: oklch(0.27 0.04 262);
+    --ring: oklch(0.66 0.18 262 / 0.45);
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-destructive: var(--destructive);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-ring: var(--ring);
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  border-color: var(--border);
+}
+
+/* Editor */
+.prose-editor {
+  outline: none;
+  min-height: 420px;
+  line-height: 1.7;
+}
+.prose-editor h1 { font-size: 1.75rem; font-weight: 700; margin: 1.5rem 0 0.75rem; }
+.prose-editor h2 { font-size: 1.35rem; font-weight: 650; margin: 1.75rem 0 0.5rem; }
+.prose-editor h3 { font-size: 1.1rem; font-weight: 600; margin: 1.25rem 0 0.5rem; }
+.prose-editor p { margin: 0.75rem 0; }
+.prose-editor ul { list-style: disc; padding-left: 1.5rem; }
+.prose-editor ol { list-style: decimal; padding-left: 1.5rem; }
+.prose-editor blockquote { border-left: 3px solid var(--primary); padding-left: 1rem; color: var(--muted-foreground); }
+.prose-editor table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.925rem; }
+.prose-editor th, .prose-editor td { border: 1px solid var(--border); padding: 0.4rem 0.6rem; text-align: left; vertical-align: top; }
+.prose-editor th { background: var(--muted); font-weight: 600; }
+.prose-editor .citation-chip {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1;
+  padding: 0.2rem 0.4rem;
+  margin: 0 0.15rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--primary);
+  vertical-align: 0.1em;
+  cursor: pointer;
+  user-select: none;
+}
+.prose-editor .citation-chip.ProseMirror-selectednode { outline: 2px solid var(--primary); }
+.prose-editor p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: var(--muted-foreground);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}

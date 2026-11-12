@@ -49,6 +49,7 @@ pub struct CloudTasksQueue {
     /// Base URL of the worker service.
     pub worker_url: String,
     pub secret: String,
+    pub service_account: Option<String>,
     pub http: reqwest::Client,
 }
 
@@ -57,7 +58,7 @@ impl JobQueue for CloudTasksQueue {
     async fn dispatch(&self, job_id: Uuid, at: DateTime<Utc>) -> Result<()> {
         use base64::Engine;
         let token = crate::services::gcp_access_token(&self.http).await?;
-        let body = json!({
+        let mut body = json!({
             "task": {
                 "scheduleTime": at.to_rfc3339(),
                 "httpRequest": {
@@ -68,6 +69,9 @@ impl JobQueue for CloudTasksQueue {
                 }
             }
         });
+        if let Some(sa) = &self.service_account {
+            body["task"]["httpRequest"]["oidcToken"] = json!({ "serviceAccountEmail": sa, "audience": self.worker_url });
+        }
         self.http
             .post(format!("https://cloudtasks.googleapis.com/v2/{}/tasks", self.queue))
             .bearer_auth(token)

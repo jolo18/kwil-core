@@ -167,7 +167,7 @@ a{{color:var(--p)}}.wrap{{max-width:760px;margin:0 auto;padding:0 20px}}
 header.site{{border-bottom:1px solid var(--line)}}header.site .wrap{{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;flex-wrap:wrap}}
 .logo{{font-weight:700;font-size:20px;color:var(--fg);text-decoration:none;display:flex;align-items:center;gap:10px}}.logo img{{height:32px}}
 nav a{{margin-left:18px;color:var(--muted);text-decoration:none;font-size:16px}}nav a:hover{{color:var(--p)}}
-main{{padding:40px 0 64px}}h1{{font-size:40px;line-height:1.15;margin:0 0 12px}}h2{{font-size:26px;margin:40px 0 12px}}h3{{font-size:21px}}
+main.wrap{{padding:40px 20px 64px}}h1{{font-size:40px;line-height:1.15;margin:0 0 12px}}h2{{font-size:26px;margin:40px 0 12px}}h3{{font-size:21px}}
 .meta{{color:var(--muted);font-size:15px;margin-bottom:28px}}.lede{{font-size:20px;color:var(--muted)}}
 article table{{border-collapse:collapse;width:100%;margin:20px 0;font-size:16px;display:block;overflow-x:auto}}
 article th,article td{{border:1px solid var(--line);padding:10px 12px;text-align:left}}article th{{background:var(--soft)}}

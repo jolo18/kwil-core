@@ -50,6 +50,7 @@ impl AppState {
                 queue: config.cloud_tasks_queue.clone().unwrap_or_default(),
                 worker_url: config.worker_url.clone().unwrap_or_default(),
                 secret: config.internal_secret.clone(),
+                service_account: config.cloud_tasks_service_account.clone(),
                 http: http.clone(),
             }),
             other => bail!("unknown QUEUE {other}"),
