@@ -1,6 +1,6 @@
 // Typed client for the Kwil API. Types mirror the Rust models in backend/src/models.rs.
 
-export const API_URL = (import.meta.env.VITE_API_URL as string | undefined) ?? 'http://localhost:8080'
+export const API_URL = (import.meta.env.VITE_API_URL as string | undefined) ?? (import.meta.env.DEV ? '' : 'http://localhost:8080')
 
 let tokenGetter: (() => Promise<string | null>) | null = null
 
